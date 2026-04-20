@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field
 import custom_errors
 import orjson
 
+
 class users(BaseModel):
     id: int
     username: str
@@ -34,7 +35,7 @@ def open_file():
             try:
                 created_at = datetime.fromisoformat(created_at)
             except ValueError:
-                pass #legend code
+                pass  # legend code
         if isinstance(created_at, datetime):
             created_at = created_at.strftime("%d/%m/%Y %H:%M:%S")
         print(u.get("username"), u.get("name"), created_at)
@@ -66,7 +67,7 @@ def write_file():
             print("Пользователь успешно записан")
     if not check:
         raise custom_errors.AddingUserError(username)
-        
+
 
 def delete_user():
     check = False
