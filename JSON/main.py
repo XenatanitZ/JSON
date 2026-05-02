@@ -1,11 +1,12 @@
 from datetime import datetime, timezone
-from logging import LoggerAdapter
 from pydantic import BaseModel, Field
 import custom_errors
 import orjson
 import pathlib
 import logging
+
 logger = logging.getLogger(__name__)
+
 
 class User(BaseModel):
     id: int
@@ -101,7 +102,7 @@ def menu():
             input_ = int(input())
             match input_:
                 case 1:
-                    try:    
+                    try:
                         open_file()
                     except custom_errors.InvalidDateError as e:
                         logging.error(e)
@@ -127,5 +128,7 @@ def menu():
                     print("Неизвестный пункт меню")
         except ValueError:
             print("Некорректный ввод")
+
+
 if __name__ == "__main__":
     menu()
